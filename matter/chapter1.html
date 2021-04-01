@@ -25,7 +25,11 @@
 			overflow-y: auto;
 			overflow-x: hidden;
 		}
-
+    .fullscreen {
+      background-color: blue;
+      width: 100%;
+      width:100%;
+    }
 		#ontop {
 			position: absolute;
 			left: 0px;
@@ -37,15 +41,15 @@
 
 <body>
 <div>
-	 <iframe src="https://my.matterport.com/show/?m=umzPJ5JzH7u" 				frameborder="0"
+	 <iframe src="https://my.matterport.com/show/?m=umzPJ5JzH7u&play=1&qs=1"		frameborder="0"
 			marginheight="0"
 			marginwidth="0"
 			width="100%"
 			height="100%"
-			scrolling="auto">></iframe>
+			scrolling="auto"></iframe>
 </div>
 
-<div id="ontop">  <button onclick="playPause()">Play/Pause</button> </div>
+<div id="ontop" class="fullscreen">  <button onclick="playPause()">Play/Pause</button> </div>
 
 <div >
 	  <audio id="audio1">
@@ -60,12 +64,16 @@
 
 <script> 
 var mySound = document.getElementById("audio1"); 
-
+counter = 0;
 function playPause() { 
+    if (counter == 0) {
+      document.getElementById("ontop").classList.remove('fullscreen')
+    }
     if (mySound.paused) 
         mySound.play(); 
     else 
         mySound.pause(); 
+    counter +=1;
 } 
 
 </script> 
