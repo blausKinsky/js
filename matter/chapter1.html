@@ -41,7 +41,7 @@
 
 <body>
 <div>
-	 <iframe src="https://my.matterport.com/show/?m=umzPJ5JzH7u&play=1&qs=1"		frameborder="0"
+	 <iframe src="https://my.matterport.com/show/?m=umzPJ5JzH7u&play=1"		frameborder="0"
 			marginheight="0"
 			marginwidth="0"
 			width="100%"
@@ -65,6 +65,9 @@
 <script> 
 var mySound = document.getElementById("audio1"); 
 counter = 0;
+// uses classes for the css, 
+//make two buttons and then remove the big center after the first click
+//or use a transparent hex with some intro text, add a class called hidded and you make the display = none
 function playPause() { 
     if (counter == 0) {
       document.getElementById("ontop").classList.remove('fullscreen')
