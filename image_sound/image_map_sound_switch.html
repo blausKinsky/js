@@ -41,79 +41,7 @@
     <area target="_self" alt="f" title="f" coords="433,119,433,271,473,272,474,121" shape="poly" onclick= "playPause(f2)">
 </map>
 
-<div>
-  <audio id="c1">
-       <source src="audio/piano/24.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="c_1">
-       <source src="audio/piano/25.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="d1">
-       <source src="audio/piano/26.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="d_1">
-       <source src="audio/piano/27.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="e1">
-       <source src="audio/piano/28.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="f1">
-       <source src="audio/piano/29.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-      <audio id="f_1">
-       <source src="audio/piano/30.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="g1">
-       <source src="audio/piano/31.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="g_1">
-       <source src="audio/piano/32.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="a1">
-       <source src="audio/piano/33.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="a_1">
-       <source src="audio/piano/34.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="b1">
-       <source src="audio/piano/35.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="c2">
-       <source src="audio/piano/36.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio>
-    <audio id="c_2">
-       <source src="audio/piano/37.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="d2">
-       <source src="audio/piano/38.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="d_2">
-       <source src="audio/piano/39.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio>  
-    <audio id="e2">
-       <source src="audio/piano/40.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
-    <audio id="f2">
-       <source src="audio/piano/41.mp3" type="audio/mpeg">
-      Your browser does not support the audio tag.
-  </audio> 
+<div id="container">
 </div> 
 
 <button type="button" value="false" id="check" onclick="change()" >half-step off</button>
@@ -124,19 +52,35 @@
 
 let notes = ["c1","c_1", "d1", "d_1","e1", "f1","g1","g_1","a1","a_1","b1","c2","c_2","d2","d_2","e2","f2"]
 console.log('the number of notes: ', notes.length);
-let myNote_IDs = [];
-
+// let myNote_IDs = [];
+let sound_folder = 'cello'
+let sound = 0;
 var i; 
-function assignNotes(){
+function assignNotes(folder){
+    console.log('folder', folder)
   // "use strict";
   for(i = 0; i<notes.length; i++){
-    const note = document.getElementById(notes[i]); 
-    myNote_IDs = myNote_IDs.concat(note);
-    console.log('the note[i] in the loop is ', note);
+    const note = document.getElementById(notes[i]) ? document.getElementById(notes[i]) : document.createElement("audio"); 
+    console.log('note', note)
+    const container = document.getElementById('container');
+    console.log('child length: ', note.children.length)
+    const source = note.children.length == 0 ? document.createElement("source") : note.children[0];
+      
+    if (note.children.length == 0) {
+        note.appendChild(source);
+        container.appendChild(note);
+    }
+
+    note.setAttribute('id', notes[i]);
+    source.setAttribute('src', 'audio/' + folder  + '/' + i + '.mp3');
+    source.setAttribute('type', 'audio/mpeg');
+//    myNote_IDs = myNote_IDs.concat(note);
+//    console.log('the note[i] in the loop is ', note);
   }
 }
-assignNotes();
-console.log('myNotes are ', myNote_IDs);
+
+assignNotes(sound_folder);
+//console.log('myNotes are ', myNote_IDs);
 
 function playPause(key){
     if (key.paused) 
@@ -145,14 +89,13 @@ function playPause(key){
         key.pause(); 
 }
 
-var input = document.getElementById("check")
-let sound = 0
 
 function change(){
-    if (input.value === 'false') {
+    let input = document.getElementById("check")
+    if (input.getAttribute('value') === 'false') {
       document.getElementById('check').style.backgroundColor = 'Green'; 
       document.getElementById('check').innerHTML = 'half-step on';
-      input.value = 'true'
+      input.setAttribute('value','true')
       sound = 2;
       soundcheck(sound);
 
@@ -160,43 +103,49 @@ function change(){
       // console.log("other")
       document.getElementById('check').style.backgroundColor = 'Red'; 
       document.getElementById('check').innerHTML = 'half-step off';
-      input.value = 'false'
+      input.setAttribute('value','false')
       sound = 1;
       soundcheck(sound);
     }
-    console.log(input.value, sound)
 }
 
 function change2(){
-    if (input.value === 'false') {
+    let input2 = document.getElementById("check2")
+    if (input2.getAttribute('value') === 'false') {
       document.getElementById('check2').style.backgroundColor = 'Purple'; 
       document.getElementById('check2').innerHTML = 'vibrato on';
-      input.value = 'true'
+      input2.setAttribute('value','true')
       sound = 3;
-      soundcheck(sound);
+      sound_folder = soundcheck(sound);
+      console.log('sound folder: ', sound_folder)
+      assignNotes(sound_folder)
     } else {
+        console.log('foo')
       // console.log("other")
       document.getElementById('check2').style.backgroundColor = 'Yellow'; 
       document.getElementById('check2').innerHTML = 'vibrato off';
-      input.value = 'false'
+      input2.setAttribute('value','false')
       sound = 1; 
-      soundcheck(sound);
+        //this is what it SHOULD look like
+//      sound_folder = soundcheck(sound);
+        //but this works
+        sound_folder = soundcheck(sound)
+        console.log('sound folder: ', sound_folder)
+        assignNotes(sound_folder)
     }
-    console.log(input.value, sound)
+    console.log(input2.value, sound)
 }
 
 function soundcheck(sound){
   
 switch (sound){
   case 1: 
-    sound = 0;
-    break;
+    return 'cello';
   case 2:
     sound = 1;
     break;
   case 3: 
-    sound = 2;
-    break; 
+    return 'piano';
   default: 
     sound = 0; 
 
