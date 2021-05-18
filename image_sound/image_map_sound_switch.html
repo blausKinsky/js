@@ -57,11 +57,11 @@ let sound_folder = 'cello'
 let sound = 0;
 var i; 
 function assignNotes(folder){
-    console.log('folder', folder)
+  console.log('folder', folder)
   // "use strict";
   for(i = 0; i<notes.length; i++){
     const note = document.getElementById(notes[i]) ? document.getElementById(notes[i]) : document.createElement("audio"); 
-    console.log('note', note)
+    // console.log('note', note)
     const container = document.getElementById('container');
     console.log('child length: ', note.children.length)
     const source = note.children.length == 0 ? document.createElement("source") : note.children[0];
@@ -70,12 +70,13 @@ function assignNotes(folder){
         note.appendChild(source);
         container.appendChild(note);
     }
-
+    console.log('setting the source now to ', folder)
     note.setAttribute('id', notes[i]);
     source.setAttribute('src', 'audio/' + folder  + '/' + i + '.mp3');
     source.setAttribute('type', 'audio/mpeg');
 //    myNote_IDs = myNote_IDs.concat(note);
 //    console.log('the note[i] in the loop is ', note);
+      console.log(source)
   }
 }
 
@@ -83,6 +84,7 @@ assignNotes(sound_folder);
 //console.log('myNotes are ', myNote_IDs);
 
 function playPause(key){
+    console.log('key is ', key)
     if (key.paused) 
       key.play(); 
     else 
@@ -97,7 +99,11 @@ function change(){
       document.getElementById('check').innerHTML = 'half-step on';
       input.setAttribute('value','true')
       sound = 2;
-      soundcheck(sound);
+      // soundcheck(sound);
+      sound_folder = soundcheck(sound);
+      console.log('sound folder: ', sound_folder + ' sound: ', sound)
+      assignNotes(sound_folder)
+      // console.log('change button sound was off now its on - green ',  sound)
 
     } else {
       // console.log("other")
@@ -105,7 +111,11 @@ function change(){
       document.getElementById('check').innerHTML = 'half-step off';
       input.setAttribute('value','false')
       sound = 1;
-      soundcheck(sound);
+      // soundcheck(sound);
+      // console.log('change button sound was on now off - red', sound)
+      sound_folder = soundcheck(sound);
+      console.log('sound folder: ', sound_folder + ' sound: ', sound)
+      assignNotes(sound_folder)
     }
 }
 
@@ -129,9 +139,9 @@ function change2(){
         //this is what it SHOULD look like
 //      sound_folder = soundcheck(sound);
         //but this works
-        sound_folder = soundcheck(sound)
-        console.log('sound folder: ', sound_folder)
-        assignNotes(sound_folder)
+      sound_folder = soundcheck(sound)
+      console.log('sound folder: ', sound_folder)
+      assignNotes(sound_folder)
     }
     console.log(input2.value, sound)
 }
@@ -142,12 +152,14 @@ switch (sound){
   case 1: 
     return 'cello';
   case 2:
-    sound = 1;
-    break;
+    // sound = 1;
+    return 'cellos3'
+    // break;
   case 3: 
     return 'piano';
   default: 
     sound = 0; 
+
 
   }
   console.log('the sound value is ', sound);
