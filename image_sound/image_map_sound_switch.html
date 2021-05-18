@@ -28,9 +28,9 @@
     <area target="_self" alt="e1" title="e1"  coords="99,121,99,210,89,211,89,270,129,270,129,122" shape="poly"onclick= "playPause(e1)">
     <area target="_self" alt="f1" title="f1"  coords="131,123,132,271,172,271,173,212,158,213,159,119" shape="poly" onclick= "playPause(f1)">
     <area target="_self" alt="f_1" title="f_1"  coords="162,121,162,210,184,210,185,122" shape="poly" onclick= "playPause(f_1)">
-    <area target="_self" alt="g1" title="g1"  coords="187,121,187,212,175,212,175,271,215,271,217,211,204,211,205,121" shape="poly" onclick= "playPause(g1)">
+    <area target="_self" alt="g1" title="g1"  coords="187,121,187,212,175,212,175,271,215,271,217,211,204,211,205,121" shape="poly" onclick="playPause(g1)">
     <area target="_self" alt="g_1" title="g_1"  coords="205,122,206,209,228,208,229,123" shape="poly" onclick= "playPause(g_1)">
-    <area target="_self" alt="a1" title="a1"  coords="230,121,229,211,218,211,218,273,258,271,258,213,247,211,245,120" shape="poly" onclick= "playPause(a1)">
+    <area target="_self" alt="a1" title="a1"  coords="230,121,229,211,218,211,218,273,258,271,258,213,247,211,245,120" shape="poly" onclick="playPause(a1)">
     <area target="_self" alt="a_1" title="a_1"  coords="247,121,247,209,270,209,271,121" shape="poly" onclick= "playPause(a_1)">
     <area target="_self" alt="b1" title="b1"  coords="272,121,271,213,262,212,261,270,301,272,301,122" shape="poly" onclick= "playPause(b1)">
     <area target="_self" alt="c2" title="c2"  coords="305,121,305,269,344,272,345,212,333,211,331,123" shape="poly" onclick= "playPause(c2)">
@@ -44,22 +44,21 @@
 <div id="container">
 </div> 
 
-<button type="button" value="false" id="check" onclick="change()" >half-step off</button>
+<button type="button" value="false" id="check" onclick="change(this)" >half-step off</button>
 
-<button type="button" value="false" id="check2" onclick="change2()" >vibrato off</button>
+<button type="button" value="false" id="check2" onclick="change(this)" >vibrato off</button>
 
 <script> 
-
 let notes = ["c1","c_1", "d1", "d_1","e1", "f1","f_1","g1","g_1","a1","a_1","b1","c2","c_2","d2","d_2","e2","f2"]
-console.log('the number of notes: ', notes.length);
 // let myNote_IDs = [];
 let sound_folder = 'cello'
 let sound = 0;
 var i; 
 function assignNotes(folder){
-  console.log('folder', folder)
   // "use strict";
   for(i = 0; i<notes.length; i++){
+    // ternary statement: something that evaluates to true or false ? if true, do this : if false, do this
+    // tl;dr: if ? then : else
     const note = document.getElementById(notes[i]) ? document.getElementById(notes[i]) : document.createElement("audio"); 
     // console.log('note', note)
     const container = document.getElementById('container');
@@ -74,7 +73,6 @@ function assignNotes(folder){
     source.setAttribute('type', 'audio/mpeg');
 //    myNote_IDs = myNote_IDs.concat(note);
 //    console.log('the note[i] in the loop is ', note);
-      console.log(source)
   }
 }
 
@@ -96,8 +94,32 @@ function playPause(key){
 }
 
 
-function change(){
+function change(button){
+    console.log('button: ', button)
+    let clicked = button.getAttribute('id')
     let input = document.getElementById("check")
+    let inputValue = input.getAttribute('value')
+    let input2 = document.getElementById("check2")
+    let input2Value = input2.getAttribute('value')
+    console.log('input value: ', inputValue)
+    if (clicked === "check") {
+      if (inputValue === 'false') {
+
+      } else {
+
+      }
+    }
+    if (clicked === "check2") {
+      if (input2Value === 'false' ) {
+
+      } else {
+
+      }
+    }     // function to make necessary changes
+    if (inputValue === 'true' && input2Value === 'true') {
+     //do the thing    
+    }
+
     if (input.getAttribute('value') === 'false') {
       document.getElementById('check').style.backgroundColor = 'Green'; 
       document.getElementById('check').innerHTML = 'half-step on';
@@ -124,7 +146,6 @@ function change(){
 }
 
 function change2(){
-    let input2 = document.getElementById("check2")
     if (input2.getAttribute('value') === 'false') {
       document.getElementById('check2').style.backgroundColor = 'Purple'; 
       document.getElementById('check2').innerHTML = 'vibrato on';
@@ -151,6 +172,7 @@ function change2(){
 }
 
 function soundcheck(sound){
+    console.log('sound: ', sound)
   
 switch (sound){
   case 1: 
