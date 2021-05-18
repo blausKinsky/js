@@ -63,14 +63,12 @@ function assignNotes(folder){
     const note = document.getElementById(notes[i]) ? document.getElementById(notes[i]) : document.createElement("audio"); 
     // console.log('note', note)
     const container = document.getElementById('container');
-    console.log('child length: ', note.children.length)
     const source = note.children.length == 0 ? document.createElement("source") : note.children[0];
       
     if (note.children.length == 0) {
         note.appendChild(source);
         container.appendChild(note);
     }
-    console.log('setting the source now to ', folder)
     note.setAttribute('id', notes[i]);
     source.setAttribute('src', 'audio/' + folder  + '/' + i + '.mp3');
     source.setAttribute('type', 'audio/mpeg');
@@ -84,11 +82,17 @@ assignNotes(sound_folder);
 //console.log('myNotes are ', myNote_IDs);
 
 function playPause(key){
-    console.log('key is ', key)
+    // key is the <audio> tag, so we want to get the source tag
+    let source = key.children[0];
+    // all we need is the src attribute, string that links to the file
+    let file = source.getAttribute('src');
+    // force javascript to load the new link
+    let audio = new Audio(file);
+    audio.load()
     if (key.paused) 
-      key.play(); 
+      audio.play(); 
     else 
-        key.pause(); 
+      audio.pause(); 
 }
 
 
