@@ -107,51 +107,16 @@ function change(button){
     // console.log('input value: ', inputValue)
     if (clicked === "check") {
       if (inputValue === 'false') {
-        document.getElementById('check').style.backgroundColor = 'Green'; 
-        document.getElementById('check').innerHTML = 'half-step on';
-        inputValue = 'true'; 
-        input.setAttribute('value',inputValue)
-        sound = 2;
-        // soundcheck(sound);
-        sound_folder = soundcheck(sound);
-        // console.log('sound folder: ', sound_folder + ' sound: ', sound)
-        assignNotes(sound_folder)
-
+        refactor('Green', 'half-step on', 'true', 'check');
         } else {
-
-        document.getElementById('check').style.backgroundColor = 'Red'; 
-        document.getElementById('check').innerHTML = 'half-step off';
-        inputValue = 'false'; 
-        input.setAttribute('value',inputValue)
-        sound = 1;
-        // soundcheck(sound);
-        // console.log('change button sound was on now off - red', sound)
-        sound_folder = soundcheck(sound);
-        // console.log('sound folder: ', sound_folder + ' sound: ', sound)
-        assignNotes(sound_folder)
-
+        refactor('Red', 'half-step off', 'false', 'check');
       }
     }
     if (clicked === "check2") {
       if (input2Value === 'false' ) {
-        document.getElementById('check2').style.backgroundColor = 'Purple'; 
-        document.getElementById('check2').innerHTML = 'vibrato on';
-        sound = 3;
-        sound_folder = soundcheck(sound);
-        assignNotes(sound_folder)
-        input2Value = 'true'; 
-        input2.setAttribute('value',input2Value)
-
-      } else {
-        document.getElementById('check2').style.backgroundColor = 'Yellow'; 
-        document.getElementById('check2').innerHTML = 'vibrato off';
-        input2Value = 'false'; 
-        input2.setAttribute('value',input2Value)
-        sound = 1; 
-        sound_folder = soundcheck(sound)
-        // console.log('sound folder: ', sound_folder)
-        assignNotes(sound_folder)
-
+        refactor('Purple', 'vibrato on', 'true', 'check2');
+        } else {
+        refactor('Yellow', 'vibrato off', 'false', 'check2');
       }
     }    
     //this section looks for both buttons being on
@@ -164,7 +129,33 @@ function change(button){
     console.log("input value 1 and 2", inputValue, input2Value)
 }
 
+function refactor(btn_color, label, tf, id){
+    if (tf === 'false') {
+        document.getElementById(id).style.backgroundColor = btn_color; //on
+        document.getElementById(id).innerHTML = label;
+        inputValue = 'true'; 
+        input.setAttribute('value',inputValue)
+        sound = 2;
+        // soundcheck(sound);
+        sound_folder = soundcheck(sound);
+        // console.log('sound folder: ', sound_folder + ' sound: ', sound)
+        assignNotes(sound_folder)
 
+        } else {
+
+        document.getElementById(id).style.backgroundColor = btn_color; //off
+        document.getElementById(id).innerHTML = label;
+        inputValue = 'false'; 
+        input.setAttribute('value',inputValue)
+        sound = 1;
+        // soundcheck(sound);
+        // console.log('change button sound was on now off - red', sound)
+        sound_folder = soundcheck(sound);
+        // console.log('sound folder: ', sound_folder + ' sound: ', sound)
+        assignNotes(sound_folder)
+      }
+
+}
    
 
 function soundcheck(sound){
