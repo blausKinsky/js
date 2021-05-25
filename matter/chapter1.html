@@ -26,7 +26,7 @@
 			overflow-x: hidden;
 		}
     .fullscreen {
-      background-color: blue;
+      /*background-color: blue;*/
       width: 100%;
       width:100%;
     }
@@ -49,7 +49,8 @@
 			scrolling="auto"></iframe>
 </div>
 
-<div id="ontop" class="fullscreen">  <button onclick="playPause()">Play/Pause</button> </div>
+<div id="ontop" class="fullscreen"> <img src="images/1.jpg" onclick="playPause()"> </div>
+<!-- make a class for this image that is 100% width and include h1 tag on top with click info with onclick -->
 
 <div >
 	  <audio id="audio1">
@@ -59,6 +60,11 @@
 	
 
 </div>
+	<audio id="hidden">
+       <source src="audio/1.mp3" type="audio/mpeg">
+      Your browser does not support the audio tag.
+  	</audio> 
+
 
 
 
@@ -71,6 +77,7 @@ counter = 0;
 function playPause() { 
     if (counter == 0) {
       document.getElementById("ontop").classList.remove('fullscreen')
+      //add a class to the image that gives it width = 0 and height = 0 and then assign that class
     }
     if (mySound.paused) 
         mySound.play(); 

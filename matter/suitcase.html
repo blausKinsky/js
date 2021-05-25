@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>suitcase</title>
+	<link href="http://fonts.cdnfonts.com/css/cooper-black" rel="stylesheet">
+
+	<style type="text/css">
+		@import url('http://fonts.cdnfonts.com/css/cooper-black');
+		html {
+			overflow: auto;
+		}
+		
+		html,
+		body,
+		div,
+		iframe {
+			margin: 0px;
+			padding: 0px;
+			height: 100%;
+			border: none;
+		}
+		
+		iframe {
+			display: block;
+			width: 100%;
+			border: none;
+			overflow-y: auto;
+			overflow-x: hidden;
+			z-index: -1;
+		}
+		h1{
+			  color:white;
+			  text-align: center;
+			  top:50%;
+			  position: relative;
+			  z-index:1;
+			  font-family: 'Cooper Black', sans-serif;
+			  
+			}
+		body{
+			background-color: black;
+		}
+
+		.thumb{
+			margin: 0px;
+			padding: 0px;
+			height: 100%;
+			width:100%;
+			border: none;
+			z-index: 0; 
+		}
+		.hidden{
+			height: 0%;
+			width: 0%;
+			display: none;
+		}
+
+
+	</style>
+</head>
+
+<body>
+	<div >
+		<h1 onclick="playPause()" id="text" >click to start</h1>
+		<img id="myThumb" class="thumb" src="images/suitcase.jpeg">
+		<iframe 
+				src="https://my.matterport.com/show/?m=XYTxthe2f6T&play=1"	
+				frameborder="0"
+				marginheight="0"
+				marginwidth="0"
+				width="100%"
+				height="100%"
+				scrolling="auto"
+				class="hidden"
+				id = "matter"
+				></iframe>
+	</div>
+
+	<div >
+		<audio id="audio1">
+	       <source src="audio/suitcase.mp3" type="audio/mpeg">
+	      Your browser does not support the audio tag.
+	  	</audio> 
+	</div>
+
+<script> 
+var mySound = document.getElementById("audio1"); 
+counter = 0;
+
+//make two buttons and then remove the big center after the first click
+//or use a transparent hex with some intro text, add a class called hidden and you make the display = none
+function playPause() { 
+    if (counter == 0) {
+      // document.getElementById("myThumb").classList.remove('thumbImage')
+      document.getElementById("myThumb").classList.add('hidden');
+      document.getElementById("matter").classList.remove('hidden');
+      document.getElementById("matter").classList.add('thumb');
+      document.getElementById("text").classList.add('hidden');
+    }
+    if (mySound.paused) 
+        mySound.play(); 
+    else 
+        mySound.pause(); 
+    counter +=1;
+} 
+
+</script> 
+
+
+</body>
+
+</html>
