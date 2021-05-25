@@ -59,10 +59,8 @@ function assignNotes(folder){
   for(i = 0; i<notes.length; i++){
     // ternary statement: something that evaluates to true or false ? if true, do this : if false, do this
     // tl;dr: if ? then : else
-    console.log('the notes[i] getElementById evaluates to ', document.getElementById(notes[i]));
     const note = document.getElementById(notes[i]) ? document.getElementById(notes[i]) : document.createElement("audio"); 
     //if there is no note for this item, make one otherwise get its id
-    console.log('note', note)
     const container = document.getElementById('container');
     const source = note.children.length == 0 ? document.createElement("source") : note.children[0];
       
@@ -104,19 +102,25 @@ function change(button){
     let inputValue = input.getAttribute('value')
     let input2 = document.getElementById("check2")
     let input2Value = input2.getAttribute('value')
-    // console.log('input value: ', inputValue)
+    console.log('clicked: ', clicked)
     if (clicked === "check") {
+      console.log('input value: ', inputValue)
       if (inputValue === 'false') {
-        refactor('Green', 'half-step on', 'true', 'check');
+        // we could pass this an object like {'color': 'XX', 'text': '}
+        inputValue = 'true'
+        refactor('Green', 'half-step on', inputValue, 'check', 2);
         } else {
-        refactor('Red', 'half-step off', 'false', 'check');
+        inputValue = 'false'
+        refactor('Red', 'half-step off', inputValue, 'check', 1);
       }
     }
     if (clicked === "check2") {
       if (input2Value === 'false' ) {
-        refactor('Purple', 'vibrato on', 'true', 'check2');
+        input2Value = 'true'
+        refactor('Purple', 'vibrato on', input2Value, 'check2', 3);
         } else {
-        refactor('Yellow', 'vibrato off', 'false', 'check2');
+        input2Value = 'false'
+        refactor('Yellow', 'vibrato off', input2Value, 'check2', 1);
       }
     }    
     //this section looks for both buttons being on
@@ -129,31 +133,17 @@ function change(button){
     console.log("input value 1 and 2", inputValue, input2Value)
 }
 
-function refactor(btn_color, label, tf, id){
-    if (tf === 'false') {
-        document.getElementById(id).style.backgroundColor = btn_color; //on
-        document.getElementById(id).innerHTML = label;
-        inputValue = 'true'; 
-        input.setAttribute('value',inputValue)
-        sound = 2;
-        // soundcheck(sound);
-        sound_folder = soundcheck(sound);
-        // console.log('sound folder: ', sound_folder + ' sound: ', sound)
-        assignNotes(sound_folder)
-
-        } else {
-
-        document.getElementById(id).style.backgroundColor = btn_color; //off
-        document.getElementById(id).innerHTML = label;
-        inputValue = 'false'; 
-        input.setAttribute('value',inputValue)
-        sound = 1;
-        // soundcheck(sound);
-        // console.log('change button sound was on now off - red', sound)
-        sound_folder = soundcheck(sound);
-        // console.log('sound folder: ', sound_folder + ' sound: ', sound)
-        assignNotes(sound_folder)
-      }
+function refactor(btn_color, label, tf, id, sound_idx){
+    let input = document.getElementById(id)
+    input.style.backgroundColor = btn_color; //on
+    input.innerHTML = label;
+   //not working yet
+//    inputValue = tf; 
+    input.setAttribute('value',tf)
+    // soundcheck(sound);
+    sound_folder = soundcheck(sound_idx);
+    // console.log('sound folder: ', sound_folder + ' sound: ', sound)
+    assignNotes(sound_folder)
 
 }
    
