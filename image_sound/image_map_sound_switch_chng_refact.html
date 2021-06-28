@@ -58,7 +58,8 @@ function assignNotes(folder){
   // "use strict";
   for(i = 0; i<notes.length; i++){
     // ternary statement: something that evaluates to true or false ? if true, do this : if false, do this
-    // tl;dr: if ? then : else
+    // tl;dr: if ? then : else 
+    // too long; didn't read (the shortest possible explanation, this is more internet slang)
     const note = document.getElementById(notes[i]) ? document.getElementById(notes[i]) : document.createElement("audio"); 
     //if there is no note for this item, make one otherwise get its id
     const container = document.getElementById('container');
@@ -108,32 +109,33 @@ function change(button){
       if (inputValue === 'false') {
         // we could pass this an object like {'color': 'XX', 'text': '}
         inputValue = 'true'
-        refactor('Green', 'half-step on', inputValue, 'check', 2);
+        refactor('Green', 'half-step on', inputValue, 'check', 'piano');
         } else {
         inputValue = 'false'
-        refactor('Red', 'half-step off', inputValue, 'check', 1);
+        refactor('Red', 'half-step off', inputValue, 'check', 'cello');
       }
     }
     if (clicked === "check2") {
       if (input2Value === 'false' ) {
         input2Value = 'true'
-        refactor('Purple', 'vibrato on', input2Value, 'check2', 3);
+        refactor('Purple', 'vibrato on', input2Value, 'check2', 'cellos3');
         } else {
         input2Value = 'false'
-        refactor('Yellow', 'vibrato off', input2Value, 'check2', 1);
+        refactor('Yellow', 'vibrato off', input2Value, 'check2', inputValue === 'true' ? 'piano' : 'cello');
+        //ternary statement: if inputValue for button 1 is true, then use piano else use cello
+        //ternary is an 'if' statement with a return
       }
     }    
     //this section looks for both buttons being on
     if (inputValue === 'true' && input2Value === 'true') {
-        sound = 4;
-        sound_folder = soundcheck(sound);
+        sound_folder = 'cellos6';
         console.log('sound folder: ', sound_folder)
         assignNotes(sound_folder) 
     }
     console.log("input value 1 and 2", inputValue, input2Value)
 }
 
-function refactor(btn_color, label, tf, id, sound_idx){
+function refactor(btn_color, label, tf, id, sound_type){
     let input = document.getElementById(id)
     input.style.backgroundColor = btn_color; //on
     input.innerHTML = label;
@@ -141,7 +143,7 @@ function refactor(btn_color, label, tf, id, sound_idx){
 //    inputValue = tf; 
     input.setAttribute('value',tf)
     // soundcheck(sound);
-    sound_folder = soundcheck(sound_idx);
+    sound_folder = sound_type;
     // console.log('sound folder: ', sound_folder + ' sound: ', sound)
     assignNotes(sound_folder)
 
@@ -165,6 +167,9 @@ switch (sound){
   default: 
     sound = 0; 
 
+    //this function exists to set a value, it should use all returns
+    //this is an example of a switch that is only doing one thing, so it should use all returns, 
+    //
 
   }
   console.log('the sound value is ', sound);
