@@ -1,4 +1,4 @@
-// Polar Coordinates (Spiral)
+// Polar Coordinates (Random Trail)
 // The Nature of Code
 // The Coding Train / Daniel Shiffman
 // https://youtu.be/O5wjXoFrau4
@@ -14,10 +14,11 @@ let r = 150;
 
 function setup() {
   createCanvas(400, 400);
-  background(0);
+  // frameRate(1);
 }
 
 function draw() {
+  background(0, 10);
   // stroke(255);
   // strokeWeight(4);
   // noFill();
@@ -30,6 +31,7 @@ function draw() {
   let y = r * sin(angle);
   point(x, y);
 
-  angle += 0.04;
-  r -= 0.2;
+  angle += 0.05; //random(-0.1, 0.1);
+  r -= random(-2, 2);//subtracts the value of the right operand from a variable and assigns the result to the variable.
+  console.log(r);
 }

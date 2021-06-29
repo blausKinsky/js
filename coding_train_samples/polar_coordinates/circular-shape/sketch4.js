@@ -1,4 +1,4 @@
-// Polar Coordinates (Basic Polar Coordinates)
+// Polar Coordinates (Circular Shape)
 // The Nature of Code
 // The Coding Train / Daniel Shiffman
 // https://youtu.be/O5wjXoFrau4
@@ -10,6 +10,7 @@
 // Circular Shape: https://editor.p5js.org/codingtrain/sketches/s10TQXDZv
 
 let angle = 0;
+let r = 100;
 
 function setup() {
   createCanvas(400, 400);
@@ -17,18 +18,28 @@ function setup() {
 
 function draw() {
   background(0);
-  stroke(255);
-  strokeWeight(4);
-  noFill();
   translate(200, 200);
-  let r = 150;
-  circle(0, 0, r * 2);
+  stroke(255);
+  strokeWeight(.75);
+  noFill();
+  // circle(0, 0, r * 2);
 
-  strokeWeight(32);
-  stroke(252, 238, 33);
-  let x = r * cos(angle);
-  let y = r * sin(angle);
-  point(x, y);
+  // let increment = map(mouseX, 0, width, PI, 0.01);
+  let increment = .03;
+  noLoop();
+  beginShape();
+  for (let a = 0; a < TWO_PI; a += increment) {
+    let r1 = r + random(-95, 95);
+    let x = r1 * cos(a);
+    let y = r1 * sin(a);
+    vertex(x, y);
+  }
+  endShape(CLOSE);
 
-  angle += 0.01;
+
 }
+
+  function keyReleased() {
+  console.log('key released');
+  if (key == 's' || key == 'S') saveCanvas(gd.timestamp(), 'png');
+  }
