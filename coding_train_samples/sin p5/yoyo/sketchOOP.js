@@ -8,30 +8,32 @@ let y = 0;
 
 function setup() {
   createCanvas(600, 400);
-  background(0, 127);
-  pen = new Pendulum(angle);
+  
+  pen = new Pendulum(angle, angleV);
   // frameRate(60);
 }
 function draw() {
+  background(0);
   translate(300, 200);// could this go in the setup? 
   // angle += angleV;
   // aCycle = angle%TWO_PI; 
   // console.log(angle, aCycle);
   
-  console.log('draw ', angle, angleV);
+  // console.log('draw ', angle, angleV);
   // aCycle = angle%TWO_PI; 
-  pen.display(angle);
-  yWord = textArray[1];
-  angle += angleV;
+  pen.display();
+  // yWord = textArray[1];
+  // angle += angleV;
 }
 
 class Pendulum{
-  constructor(angle){
+  constructor(angle, angleV){
     // this.y = y;
     // this.angleV = angleV;
     // this.word = word; 
     this.angle = angle; 
-    console.log('in the constructor', this.angle);
+    this.angleV = angleV; 
+    console.log('in the constructor', this.angle, this.angleV);
     
   }
   // move(){
@@ -39,6 +41,7 @@ class Pendulum{
   //   this.x = map(sin(this.angle), -1, 1, -300, 300);
   // }
   display(){
+    this.angle += this.angleV;
     // this.y = map(sin(this.angle), -1, 1, -200, 200); 
     let y = map(sin(this.angle), -1, 1, -200, 200);
     console.log('y is ', y);
