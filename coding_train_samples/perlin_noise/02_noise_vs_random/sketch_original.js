@@ -29,9 +29,12 @@ function draw() {
   fill(255);
   ellipse(x, y, 24, 24);
 
-  if (yoff < 0 || yoff > height){
-  	inc2 = inc2 * -1;
-  }
+//the bounce is unnecessary because the mapping won't let you exceed the edges
+  // if (yoff < 0 || yoff > height){
+  // 	inc2 = inc2 * -1;
+  // }
   print(x, y, xoff, yoff); 
   // currentSecond = second(); 
 }
+
+//think of how you might be able to move the bell curve to favor the right or left

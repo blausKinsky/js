@@ -23,6 +23,8 @@ function draw() {
     // var y = s + n;
 
     //var y = random(height);
+    //this was the first example of him using the sin
+    // var y = height/2 + sin(xoff) * height/2;
     var y = noise(xoff) * height;
     vertex(x, y);
 
