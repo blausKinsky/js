@@ -25,7 +25,7 @@ class Pendulum{
           // console.log('aCycle HIT in counter 0', textArray[int(random(textArray.length))], myColor[int(random(myColor.length))]);
           }
           //question about whether I should be using this.typ, this.angleV, this.angle
-
+          
         break;
 
         case 1:

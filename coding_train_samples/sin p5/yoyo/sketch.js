@@ -40,7 +40,6 @@ function setup() {
 function draw() {
   background(50, 200);
   translate(300, 200);
-  // aCycle = angle%TWO_PI;
   for (let i = 0; i<myColor.length; i++){
       angle[i] += angleV[i]; 
       pen[i].typeSetter(i,angleV[i], angle[i]); 
