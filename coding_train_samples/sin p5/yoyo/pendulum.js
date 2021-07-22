@@ -30,7 +30,8 @@ class Pendulum{
 
         case 1:
           a2Cycle = angle%TWO_PI; 
-          this.x = map(sin(angle), -1, 1, -300, 300);
+          this.x = 0;
+          // this.x = map(sin(angle), -1, 1, -300, 300);
           this.y = map(sin(angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, a2Cycle, 'the x and y are ', this.x,this.y);
 
@@ -48,7 +49,8 @@ class Pendulum{
         case 2:
           a3Cycle = angle%TWO_PI; 
           this.x = map(sin(angle), -1, 1, -300, 300);
-          this.y = map(sin(angle), -1, 1, (-1*height/2), height/2);
+          this.y = 0; 
+          // this.y = map(sin(angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, a3Cycle, 'the x and y are ', this.x,this.y);
 
           if(a3Cycle < (angleV + offset) && a3Cycle > 0.0){
@@ -64,7 +66,8 @@ class Pendulum{
 
         case 3:
           a4Cycle = angle%TWO_PI; 
-          this.x = map(sin(angle), -1, 1, -300, 300);
+          //changed to cos of x 
+          this.x = map(cos(angle), -1, 1, -300, 300);
           this.y = map(sin(angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, a4Cycle, 'the x and y are ', this.x,this.y);
 
@@ -80,10 +83,10 @@ class Pendulum{
         break;
 
         case 4:
-          // console.log('the type is 4', typ, angleV, angle);
+          // changed to cos of y
           a5Cycle = angle%TWO_PI; 
           this.x = map(sin(angle), -1, 1, -300, 300);
-          this.y = map(sin(angle), -1, 1, (-1*height/2), height/2);
+          this.y = map(cos(angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, a5Cycle, 'the x and y are ', this.x,this.y);
 
           if(a5Cycle < (angleV + offset) && a5Cycle > 0.0){
@@ -98,7 +101,8 @@ class Pendulum{
 
         case 5:
           a6Cycle = angle%TWO_PI; 
-          this.x = map(sin(angle), -1, 1, -300, 300);
+          //mapped -1, 1 to 1, -1
+          this.x = map(sin(angle), 1, -1, -300, 300);
           this.y = map(sin(angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, a6Cycle, 'the x and y are ', this.x,this.y);
 
