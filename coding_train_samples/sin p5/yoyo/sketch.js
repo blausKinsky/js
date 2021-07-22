@@ -12,7 +12,7 @@ let myClr =[];
 let randomChoice =[];
 let myText = [];
 let counter = 0;
-let angle = [0,0,0,0,0,0]; 
+let initAngle = 0; 
 let inc = 0.0075;
 let aVmin = 0.01275;
 let vStart = 0.200
@@ -33,7 +33,7 @@ function setup() {
 
     myClr[i] = myColor[int(random(myColor.length))];
     myText[i] = textArray[int(random(textArray.length))];
-    pen[i] = new Pendulum(angle, angleV[i], 0, 0, i, myClr[i],myText[i]);
+    pen[i] = new Pendulum(initAngle, angleV[i], 0, 0, i, myClr[i],myText[i]);
   }
 }
 
@@ -42,8 +42,7 @@ function draw() {
   translate(300, 200);
   // aCycle = angle%TWO_PI;
   for (let i = 0; i<myColor.length; i++){
-      angle[i] += angleV[i]; 
-      pen[i].typeSetter(i,angleV[i], angle[i]); 
+      pen[i].typeSetter(); 
       // console.log('pen ', i, 'ANGLE is ', pen[i].angle); 
       // console.log('the x & y parameter ', pen[i].x, pen[i].y);
       // console.log('THE TEXT AND COLOR ARE ', pen[i].txt, pen[i].clr);

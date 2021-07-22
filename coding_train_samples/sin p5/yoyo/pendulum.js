@@ -1,6 +1,7 @@
 class Pendulum{
   constructor(angle, angleV,myX,myY,typ, myClr,myText){
-    this.angle = angle;
+    this.angle = 0;
+    this.aCycle = 0;
     this.angleV = angleV;
     this.x = myX;
     this.y = myY; 
@@ -9,16 +10,20 @@ class Pendulum{
     this.txt = myText; 
   }
 
-  typeSetter(typ, angleV,angle){
+  typeSetter(){
     //setter checks the type of pendulum
-      switch(typ){
+    console.log('type: ', this.typ)
+    this.angle += this.angleV
+    console.log('angle: ', this.angle)
+    
+      switch(this.typ){
         case 0:
-          aCycle = angle%TWO_PI; 
-          this.x = map(sin(angle), -1, 1, -300, 300);
-          this.y = map(sin(angle), -1, 1, (-1*height/2), height/2);
+          this.aCycle = this.angle%TWO_PI; 
+          this.x = map(sin(this.angle), -1, 1, -300, 300);
+          this.y = map(sin(this.angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, aCycle, 'the x and y are ', this.x,this.y);
 
-          if(aCycle < (angleV + offset) && aCycle > 0.0){
+          if(aCycle < (this.angleV + offset) && aCycle > 0.0){
             this.txt = textArray[int(random(textArray.length))]; 
             this.clr = myColor[int(random(myColor.length))]; 
             // console.log('aCycle HIT in case 0', this.txt, this.clr);
