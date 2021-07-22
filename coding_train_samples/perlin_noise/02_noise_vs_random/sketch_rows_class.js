@@ -18,6 +18,9 @@ let ydist = 60;
 let [y1, y2, y3, y4, y5, y6] =[0,0,0,0,0,0,];
 // let onOff = false; 
 let [x1,x2,x3,x4,x5,x6] = [0,0,0,0,0,0,];
+let hasHit = false; 
+let lastChange = 0; 
+let [one, two, three, four, five,six] = [0,1,2,3,4,5];
 
 
 function setup() {
@@ -38,7 +41,8 @@ function draw() {
   xoff5 += 0.0093; 
   xoff6 += 0.0091;
 
-  // for (i = 0; i <numOfElements; i+1){
+  //make sure you += increment the i in the for loop or it will create an infinite loop
+  // for (i = 0; i <numOfElements; i++){
   //   x[i] = map(noise(xoff[i]), 0, 1, 0, width);
 
   // }
@@ -56,49 +60,41 @@ function draw() {
   y5 = yoff + 4*ydist; 
   y6 = yoff + 5*ydist; 
 //when a for loop blows up everything
-  // let newchange = 'tomato'; 
-  text(words[0], x1, y1); 
-  text(words[1], x2, y2); 
-  text(words[2], x3, y3); 
-  text(words[3], x4, y4); 
-  text(words[4], x5, y5); 
-  text(words[5], x6, y6); 
+
+  text(words[one], x1, y1); 
+  text(words[two], x2, y2); 
+  text(words[three], x3, y3); 
+  text(words[four], x4, y4); 
+  text(words[five], x5, y5); 
+  text(words[six], x6, y6); 
 
   // ellipse(x, y, 24, 24);
   currentSecond = second(); 
+  milliSecond = millis();
   // noloop(); 
 
-  if (currentSecond%2 == 0){
-  // if (currentSecond%2 == 0 && onOff == true){
-    // for (j = 0; j<numOfElements; j+1){
-    //   newchange[j] = changeText();
-    //   text(newchange[j], x[i], y[i]);
-    // }
-    words[0] = changeText(); 
-   
-    words[1] = changeText(); 
+  if (currentSecond%2 == 0 && !hasHit){
 
-    words[2] = changeText(); 
-  
-    words[3] = changeText(); 
-    
-    words[4] = changeText();
-    words[5] = changeText();  
-    text(words[0], x1, y1);
-    text(words[1], x2, y2);
-    text(words[2], x3, y3);
-    text(words[3], x4, y4);
-    text(words[4], x5, y5);
-    text(words[5], x6, y6); 
+    one = int(random()*words.length);
+    two = int(random()*words.length);
+    three = int(random()*words.length);
+    four = int(random()*words.length);
+    five = int(random()*words.length);
+    six = int(random()*words.length);
+
+    text(words[one], x1, y1);
+    text(words[two], x2, y2);
+    text(words[three], x3, y3);
+    text(words[four], x4, y4);
+    text(words[five], x5, y5);
+    text(words[six], x6, y6); 
+    hasHit = true; 
+    lastChange = currentSecond; 
   }
 
-  // else{
-  //   // onOff = !onOff; //why didn't this work? 
-
-  //   // console.log(onOff); 
-  // }
-
-
+  if (currentSecond>lastChange){
+    hasHit = false; 
+  }
 
 }
 

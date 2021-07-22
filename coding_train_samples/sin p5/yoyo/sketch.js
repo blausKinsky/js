@@ -1,5 +1,5 @@
 //next: change words at 0
-let [aCycle, a2Cycle, a3Cycle] = [0,0,0];
+let [aCycle, a2Cycle, a3Cycle, a4Cycle, a5Cycle, a6Cycle] = [0,0,0,0,0,0];
 let offset = 0.000005;
 let textArray = ['musk', 'maneuver', 'makeup', 'manhandle','sogged', 'soaked', 'sprayed', 'slipped','backlit', 'frontlit', 'twinkle', 'sidelight'];
 let myColor = ['red', 'blue','orange','yellow', 'green','magenta'];
@@ -11,32 +11,42 @@ let myClr =[];
 let randomChoice =[];
 let myText = [];
 let counter = 0;
+let angle = [0,0,0,0,0,0]; 
+let inc = 0.0075;
+let aVmin = 0.01275;
+let vStart = 0.200
+let vectorSetup = [];
+
 
 
 // let colorArray = [(238, 238, 33),(33, 238, 238),(238, 33, 238),(33, 238, 33),(238, 33, 33),(33, 33, 238)];
 
 function setup() {
   createCanvas(600, 400);
-  let angle = 0;
+  
   for(let i=0; i<myColor.length; i++ ){
-    let inc = 0.0075;
-    let aVmin = 0.01275;
-    aV = aVmin + inc;
-    angleV = append(angleV, aV);
-    // print(aV, angleV);
-    pen[i] = new Pendulum(angle, angleV[i]);
-    myClr[i] = pen[i].chooseColor();
-    myText[i] = pen[i].chooseWord();
+    // aV = aVmin + inc;
+    // aV += aV
+    aV = (i * .0075) + .01275; 
+    // vectorSetup[i] = aV; 
+    angleV = append(angleV, aV);// I'm using a for loop to generate the angleV array
+    print('i is ', i, aV, angleV);
+    pen[i] = new Pendulum(angle, angleV[i], 0, 0, i);
+    // myClr[i] = pen[i].chooseColor();
+    // myText[i] = pen[i].chooseWord();
     // print(myClr[i], myText[i]);
   }
-
 }
+
 function draw() {
   background(0, 53);
   translate(300, 200);
   // aCycle = angle%TWO_PI;
   for (let i = 0; i<myColor.length; i++){
-      pen[i].display(myClr[i], myText[i]);
+      
+      angle[i] += angleV[i]; 
+      pen[i].typeSetter(i,angleV[i], angle[i]); 
+      // pen[i].display(myClr[i], myText[i]);
   }
 }
 

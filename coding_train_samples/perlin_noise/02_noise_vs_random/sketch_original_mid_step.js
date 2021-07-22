@@ -14,7 +14,7 @@ function setup() {
 function draw() {
   background(51);
   xoff1 += inc;
-  xoff2 += inc
+  xoff2 += inc;
 
   var x = map(noise(xoff1), 0, 1, 0, width);
   var y = map(noise(xoff2), 0, 1, 0, height); 
