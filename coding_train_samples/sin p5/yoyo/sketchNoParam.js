@@ -17,7 +17,7 @@ function setup() {
     angleV = append(angleV, aV);//a for loop to generate the angleV array
     myClr[i] = myColor[int(random(myColor.length))];
     myText[i] = textArray[int(random(textArray.length))];
-    pen[i] = new Pendulum(initAngle, angleV[i], 0, 0, i, myClr[i],myText[i]);
+    pen[i] = new Pendulum(i);
   }
 }
 

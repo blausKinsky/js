@@ -1,22 +1,28 @@
 class Pendulum{
-  constructor(angle, angleV,myX,myY,typ, myClr,myText){
+  constructor(typ){
     this.angle = 0;
     this.aCycle = 0;
-    this.angleV = angleV;
-    this.x = myX;
-    this.y = myY; 
+    // this.angleV = angleV;
+    this.x = 0;
+    this.y = 0; 
     this.typ = typ; 
-    this.clr = myClr;
-    this.txt = myText; 
-  }
+    this.clr = 'blue';
+    this.txt = 'yes'; 
+    this.angleV = [0.0085, 0.010, 0.0125, 0.025, 0.375, 0.50];
+
+  //   for(let i=0; i<myColor.length; i++ ){
+  //     this.myClr[i] = myColor[int(random(myColor.length))];
+  //     this.myText[i] = textArray[int(random(textArray.length))]; 
+  // }
+}
 
 //convert all variables to class specific variables, make a self-contained class with no parameters
 //then create object version
   typeSetter(){
     //setter checks the type of pendulum
-    // console.log('type: ', this.typ)
-    this.angle += this.angleV 
-    // console.log('angle: ', this.angle)
+    // console.log('type: ', this.typ);
+    this.angle += this.angleV; 
+    // console.log('angle: ', this.angle);
     
       switch(this.typ){
         case 0:
