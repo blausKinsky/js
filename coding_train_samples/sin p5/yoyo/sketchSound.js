@@ -35,14 +35,20 @@ function draw() {
       if (keyIsPressed) {
         // console.log('keyIsPressed');
         isPressed = true; 
-        for (j =1;j<7;j++){
-          if (key == j) {
-          sonifyXY(pen[j-1].x, j-1, isPressed);
-          text(pen[j-1].txt, pen[j-1].x, pen[j-1].y);
-          console.log('key is ', key); 
-          }
-        }
-      }else {
+        let m = key-1;
+        
+        sonifyXY(pen[m].x, m, isPressed);
+        text(pen[m].txt, pen[m].x, pen[m].y);
+        console.log('key is ', key); 
+
+        // for (j =1;j<7;j++){
+        //   if (key == j) {
+          // sonifyXY(pen[j-1].x, j-1, isPressed);
+          // text(pen[j-1].txt, pen[j-1].x, pen[j-1].y);
+          // console.log('key is ', key); 
+        //   }
+        // }
+      } else {
         sonifyXY(pen[i].x, i); 
         text(pen[i].txt, pen[i].x, pen[i].y);
         isPressed = false; 

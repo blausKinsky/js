@@ -50,16 +50,21 @@
 
 <script> 
 
-
-//each if should be a key
 //class example: this is simple pseudocode, but should point you in the right direction
 class Button {
   constructor(id, type) {
     if (type == 'halfstep') {
-      this.color = 
+      this.color = 'Green';
+      this.sound = 2;
+      this.isClicked = false; 
+      this.btnText = 'halfstep off';
+
         //set other attributes
     } elif type == 'vibrato' {
-      this.color =
+      this.color = 'Purple';
+      this.sound = 3;
+      this.isClicked = false; 
+      this.btnText = 'vibrato off';
     }
     //we have to make sure that our buttons are bound to our JS class
     // ideally, we would just createElement() within these buttons and avoid html entirely, but regardless
@@ -70,6 +75,20 @@ class Button {
     }
   }
   update(type) {
+  if (type == 'halfstep'){
+        if (this.isClicked == false){
+          this.color = 'Red';
+          this.sound = 1; 
+          this.btnText = 'halfstep on';
+      } else{
+          this.color = 'Green';
+          this.sound = 2; 
+          this.btnText = 'halfstep off';
+      }
+
+  }
+
+
     //anything that only applies to a single button can go here
   }
 
@@ -80,8 +99,9 @@ class Button {
 
 // the best way in OOP to deal with the problem we had last week (that certain parts of our state machine are dependent on the state of both buttons, rather than them being isolated) is to create a container class for our buttons, so that we have a single place that keeps track of them both and can perform actions that require knowledge of both buttons' state
 class ButtonMenu {
+  
   constructor() {
-    const h = new Button('check, 'halfstep')
+    const h = new Button('check', 'halfstep');
     const v = new Button('check2', 'vibrato')
     this.contents = {'halfstep': h, 'vibrato': v}
   }

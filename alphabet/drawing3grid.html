@@ -1,0 +1,80 @@
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.3/p5.min.js"></script>
+  <script src="https://unpkg.com/rita"></script>
+  <script>
+ 'use strict';
+    let longLine = 30;
+    let shortLine = longLine/4; 
+    let accum = longLine/3; 
+    let tileCount = 20;
+    let xLine = tileCount/4; 
+    // let area = 10; 
+
+  function setup() {
+    createCanvas(400,400);
+    background(50);
+    stroke(200);
+    strokeWeight(2);
+
+    for (let gridY = 0; gridY < tileCount; gridY++) {
+    for (let gridX = 0; gridX < tileCount; gridX++) {
+      let posX = width / tileCount * gridX;
+      let posY = height / tileCount * gridY;
+      // rect(posX, posY,area, area); 
+
+      for (let i = 0; i<4;i++){
+        line(posX, posY, posX, posY+shortLine); 
+        // xLine += xLine;
+      }
+
+      // console.log(posX, posY, gridX, gridY);
+      // noLoop(); 
+    }
+  }
+}
+
+
+  //     if (xOrY<.5){
+  //     // console.log('x and y are ', x, y); 
+  //       line(x, y, x+longLine,y);
+  //       xLorR = Math.random(); 
+  //       if (xLorR<.5){
+  //         for (let i = 0; i<4;i++){
+  //           line(x, y, x, y+shortLine); 
+  //           x += accum;
+  //         }
+  //       } else {
+  //         for (let i = 0; i<4;i++){
+  //           line(x, y, x, y-shortLine);
+  //           x += accum;
+  //       } 
+  //     }
+       
+  //   }else{
+  //     line(x, y, x,y+longLine);
+  //     yLorR = Math.random(); 
+  //       if (yLorR<.5){
+  //         for (let i = 0; i<4;i++){
+  //           line(x, y, x+shortLine, y);
+  //           y += accum; 
+  //         }
+          
+  //       }else{
+  //           for (let i = 0; i<4;i++){
+  //             line(x, y, x-shortLine, y);
+  //             y += accum;  
+  //         }
+
+  //     }
+      
+  //   }
+  // } 
+
+
+
+  </script>
+</html>

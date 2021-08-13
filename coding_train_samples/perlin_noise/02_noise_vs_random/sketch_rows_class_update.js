@@ -28,8 +28,6 @@ let randomIndices = [0,1,2,3,4,5, 6, 7, 8];
 function setup() {
   createCanvas(400, 400);
   frameRate(60);
-
-
   }
 
 
@@ -43,7 +41,7 @@ function draw() {
     x[i] = map(noise(xoff[i]), 0, 1, 0, width)
     //the magic happens below
     text(words[randomIndices[i]], x[i], y[i]);
-    console.log('i is ', i);
+    // console.log('i is ', i, words[randomIndices[i]], x[i], y[i]);
     // text(v, x[i], y[i]);
 
   }
@@ -53,7 +51,7 @@ function draw() {
 
   if (currentSecond%2 == 0 && !hasHit){
     let v = changeText();
-    console.log('v equals ',v);
+    // console.log('v equals ',v);
     // we want this to 'permanently' - or at least until the next loop -
     // change the word we're getting in the prior loop.
     // so let's make a function that does that
@@ -76,10 +74,13 @@ function draw() {
   // text(v, x[i], y[i]);
 }
 
+//add to code utility 
 function shuffleArray(arr) {
   for (let i = 0; i < arr.length; i++) {
     const j = Math.floor(Math.random() * (i + 1));
+    console.log('inside shuffleArray ', i, j);
     [arr[i], arr[j]] = [arr[j], arr[i]];//this is saying switch places with another random element in the array
+    console.log('after shuffle', i, j); 
   }
 }
 

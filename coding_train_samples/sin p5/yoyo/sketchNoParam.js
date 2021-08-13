@@ -22,6 +22,7 @@ function setup() {
 }
 
 function draw() {
+  console.log("foo"); 
   background(50, 180);
   translate(300, 200);
   for (let i = 0; i<myColor.length; i++){

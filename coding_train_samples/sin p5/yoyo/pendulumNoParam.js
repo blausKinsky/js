@@ -9,11 +9,6 @@ class Pendulum{
     this.clr = 'blue';
     this.txt = 'yes'; 
     this.angleV = [0.0085, 0.010, 0.0125, 0.025, 0.375, 0.50];
-
-  //   for(let i=0; i<myColor.length; i++ ){
-  //     this.myClr[i] = myColor[int(random(myColor.length))];
-  //     this.myText[i] = textArray[int(random(textArray.length))]; 
-  // }
 }
 
 //convert all variables to class specific variables, make a self-contained class with no parameters
@@ -21,7 +16,7 @@ class Pendulum{
   typeSetter(){
     //setter checks the type of pendulum
     // console.log('type: ', this.typ);
-    this.angle += this.angleV; 
+    this.angle += this.angleV[this.typ]; 
     // console.log('angle: ', this.angle);
     
       switch(this.typ){
@@ -29,8 +24,8 @@ class Pendulum{
           this.aCycle = this.angle%TWO_PI; 
           this.x = map(sin(this.angle), -1, 1, (-1*width/2), width/2);
           this.y = map(sin(this.angle), -1, 1, (-1*height/2), height/2);
-          // console.log('the type is 0', typ, angleV, angle, aCycle, 'the x and y are ', this.x,this.y);
-          if(this.aCycle < (this.angleV + offset) && this.aCycle > 0.0){
+          console.log('the type is 0', this.typ, this.angleV[this.typ], 'the x and y are ', this.x,this.y);
+          if(this.aCycle < (this.angleV[this.typ] + offset) && this.aCycle > 0.0){
             this.txt = textArray[int(random(textArray.length))]; 
             this.clr = myColor[int(random(myColor.length))]; 
           }
@@ -43,7 +38,7 @@ class Pendulum{
           // this.x = map(sin(this.angle), -1, 1,(-1*width/2), width/2));
           this.y = map(sin(this.angle), -1, 1, (-1*height/2), height/2);
 
-          if(this.aCycle < (this.angleV + offset) && this.aCycle > 0.0){
+          if(this.aCycle < (this.angleV[this.typ] + offset) && this.aCycle > 0.0){
             this.txt = textArray[int(random(textArray.length))]; 
             this.clr = myColor[int(random(myColor.length))]; 
             // console.log('a2Cycle HIT in case 1', this.txt, this.clr);
@@ -58,7 +53,7 @@ class Pendulum{
           // this.y = map(sin(angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, a3Cycle, 'the x and y are ', this.x,this.y);
 
-          if(this.aCycle < (this.angleV + offset) && this.aCycle > 0.0){
+          if(this.aCycle < (this.angleV[this.typ] + offset) && this.aCycle > 0.0){
             this.txt = textArray[int(random(textArray.length))]; 
             this.clr = myColor[int(random(myColor.length))]; 
             // console.log('aC3ycle HIT in case 2', this.txt, this.clr);
@@ -73,7 +68,7 @@ class Pendulum{
           this.y = map(sin(this.angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, a4Cycle, 'the x and y are ', this.x,this.y);
 
-          if(this.aCycle < (this.angleV + offset) && this.aCycle > 0.0){
+          if(this.aCycle < (this.angleV[this.typ] + offset) && this.aCycle > 0.0){
             this.txt = textArray[int(random(textArray.length))]; 
             this.clr = myColor[int(random(myColor.length))]; 
             // console.log('a4Cycle HIT in case 3', this.txt, this.clr);
@@ -88,7 +83,7 @@ class Pendulum{
           this.y = map(cos(this.angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, a5Cycle, 'the x and y are ', this.x,this.y);
 
-          if(this.aCycle < (this.angleV + offset) && this.aCycle > 0.0){
+          if(this.aCycle < (this.angleV[this.typ] + offset) && this.aCycle > 0.0){
             this.txt = textArray[int(random(textArray.length))]; 
             this.clr = myColor[int(random(myColor.length))]; 
             // console.log('a5Cycle HIT in case 4 ', this.txt, this.clr);
@@ -103,7 +98,7 @@ class Pendulum{
           this.y = map(sin(this.angle), -1, 1, (-1*height/2), height/2);
           // console.log('the type is 0', typ, angleV, angle, a6Cycle, 'the x and y are ', this.x,this.y);
 
-          if(this.aCycle < (this.angleV + offset) && this.aCycle > 0.0){
+          if(this.aCycle < (this.angleV[this.typ] + offset) && this.aCycle > 0.0){
             this.txt = textArray[int(random(textArray.length))]; 
             this.clr = myColor[int(random(myColor.length))]; 
             // console.log('a6Cycle HIT in case 5', this.txt, this.clr);
