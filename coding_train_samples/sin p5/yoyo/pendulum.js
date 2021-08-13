@@ -28,12 +28,10 @@ class Pendulum{
             this.txt = textArray[int(random(textArray.length))]; 
             this.clr = myColor[int(random(myColor.length))]; 
           }
-<<<<<<< HEAD
 
-=======
           //question about whether I should be using this.typ, this.angleV, this.angle
           
->>>>>>> 728d0e9e8fa654b041edcd6fe815d8925bc5544a
+
         break;
 
         case 1:
