@@ -21,15 +21,16 @@
     strokeWeight(2);
 
     for (let gridY = 0; gridY < tileCount; gridY++) {
-    for (let gridX = 0; gridX < tileCount; gridX++) {
-      let posX = width / tileCount * gridX;
-      let posY = height / tileCount * gridY;
-      // rect(posX, posY,area, area); 
-
-      for (let i = 0; i<4;i++){
-        line(posX, posY, posX, posY+shortLine); 
-        // xLine += xLine;
-      }
+      for (let gridX = 0; gridX < tileCount; gridX++) {
+        let posX = width / tileCount * gridX;
+        let posY = height / tileCount * gridY;
+        // rect(posX, posY,area, area); 
+        line(posX, posY, posX+longLine, posY); 
+        for (let i = 0; i<4;i++){
+          line(posX, posY, posX, posY+shortLine); 
+          posX += accum; 
+          console.log(posX);
+        }
 
       // console.log(posX, posY, gridX, gridY);
       // noLoop(); 

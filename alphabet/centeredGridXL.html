@@ -1,0 +1,98 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <style type="text/css">
+    body{
+      background-color: black;
+    }
+  </style>
+
+</head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.3/p5.min.js"></script>
+  <script src="https://unpkg.com/rita"></script>
+  <script>
+ 'use strict';
+    let longLine = 20;
+    let shortLine = longLine/4; 
+    let accum = longLine/3; 
+    let w = 1000;
+    let h = 1000;
+    let tileCount = Math.floor(w*.02); 
+    // let tileCount = 60;
+    let xLine = tileCount/4; 
+    let xOrY = .5; 
+    let xUorD = .5;
+    let yLorR = .5;    
+
+  function setup() {
+    w = windowWidth;
+    h = windowHeight; 
+    tileCount = Math.floor(w*.02); 
+    console.log('the w, h, tc is ', windowWidth, windowHeight, tileCount);
+    createCanvas(w,h);
+    background(50);
+    stroke(200);
+    strokeWeight(2);
+
+    for (let gridY = 0; gridY < tileCount; gridY++) {
+      for (let gridX = 0; gridX < tileCount; gridX++) {
+        let posX = width / tileCount * gridX;
+        let posY = height / tileCount * gridY;
+
+        xOrY = Math.random(); 
+
+        if (xOrY<.5){//these are horizontal options
+          let yOffset = posY+longLine/2;
+          line(posX, yOffset, posX+longLine, yOffset);
+          // line(posX, posY, posX+longLine, posY);
+          xUorD = Math.random();
+          if (xUorD<.5){
+            for (let i = 0; i<4;i++){
+              line(posX, yOffset, posX, yOffset+shortLine); 
+              posX += accum; 
+              console.log('x pos D', posX);
+            } 
+
+          } else {
+            for (let i = 0; i<4;i++){
+              line(posX, yOffset, posX, yOffset-shortLine); 
+              posX += accum; 
+              console.log('x pos U', posX);
+            } 
+
+          }
+
+        } else { //these are the vertical options
+          let xOffset = posX+longLine/2;
+          line(xOffset, posY, xOffset, posY+longLine); 
+          // line(posX, posY, posX, posY+longLine);
+          yLorR = Math.random(); 
+          if (yLorR<.5){
+              for (let i = 0; i<4;i++){
+                line(xOffset, posY, xOffset+shortLine, posY); 
+                posY += accum; 
+                console.log('y pos R', posY);
+              }
+
+          }else{
+              for (let i = 0; i<4;i++){
+                line(xOffset, posY, xOffset-shortLine, posY); 
+                posY += accum; 
+                console.log('y pos L', posY);
+              }
+          }
+        } 
+      }
+    }
+  }
+
+
+
+
+ 
+
+
+
+  </script>
+</html>
