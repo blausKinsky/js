@@ -1,0 +1,49 @@
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.3/p5.min.js"></script>
+  <script src="https://unpkg.com/rita"></script>
+  <script>
+
+  let it = 'nn'; 
+  function setup() {
+    createCanvas(400,400);
+    background(50);
+    textSize(12);
+    noStroke();
+    let s2 = "the lump of perfumed fat slowly melts into the musicians wig";
+    let pos = RiTa.pos(s2); 
+    let v = RiTa.tokenize(s2);
+    // console.log(typeof(pos), pos[0], pos[1], pos[3]);
+    text(s2, 20,20);
+    text(pos, 20, 40);
+    let adArray = ['dt','nn', 'in','vbd','nn','rb','nns','in','dt','nns','nn'];
+    for (let i=0;i<v.length;i++){
+      // let it = RiTa.pos(v[i]);
+      it = adArray[i]; 
+      text(posCheck(it), 20, 100 + i * 20);
+    }
+  }
+
+  function posCheck(partOS){
+    let syl; 
+    if (it == partOS){
+        if(partOS == 'nn'){
+          syl = 1;
+        }
+        if(partOS == 'rb'||partOS=='jj'){
+          syl = 2;
+        }
+        if(partOS == 'nns' ||  partOS == 'vbd'){
+          syl = 3; 
+        }
+        let word = RiTa.randomWord({pos:partOS, numSyllables:syl});
+        return word; 
+    }
+  }
+
+  </script>
+
+</html>

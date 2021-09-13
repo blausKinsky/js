@@ -1,0 +1,70 @@
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.3/p5.min.js"></script>
+  <script src="https://unpkg.com/rita"></script>
+  <script>
+  function setup() {
+    createCanvas(400,400);
+    background(50);
+    textSize(12);
+    noStroke();
+
+    let s2 = "the lump of perfumed fat slowly melts into the musicians wig";
+    let pos = RiTa.pos(s2); 
+    let v = RiTa.tokenize(s2);
+    // console.log(typeof(pos), pos[0], pos[1], pos[3]);
+    text(s2, 20,20);
+    text(pos, 20, 40);
+    let adArray = ['dt','nn', 'in','vbd','nn','rb','nns','in','dt','nns','nn'];
+
+    // for (let i=0; i<v.length;i++){
+
+    //   let it = RiTa.pos(v[i]);
+    //   console.log('it is ', it);
+
+    //   switch(it){
+    //     case ['nn']:  
+    //       console.log('case one is met');
+    //       v[i] = RiTa.randomWord({pos:"nn", numSyllables:1});
+    //       break; 
+
+    //     case ['jj']: 
+    //       console.log("case2 is met")
+    //       let rJJs = Math.floor((Math.random()*2)+1);
+    //       console.log(rJJs); 
+    //       v[i] = RiTa.randomWord({pos:"jj", numSyllables:rJJs});
+    //       break; 
+    //   }
+    //   text(v[i], 20, 100 + i * 20);
+    // }
+    for (let i=0;i<v.length;i++){
+      // let it = RiTa.pos(v[i]);
+      let it = adArray[i]; 
+      // console.log(it)
+      if(it == 'nn'){
+        v[i] = RiTa.randomWord({pos:"nn", numSyllables:1});
+      }
+      if (it == 'vbd'){
+        v[i] = RiTa.randomWord({pos:"vbd", numSyllables:3});
+      }
+      if (it == 'jj'){
+          let rJJs = Math.floor((Math.random()*2)+1);
+          console.log(rJJs);
+          v[i] = RiTa.randomWord({pos:"jj", numSyllables:rJJs});
+      }
+      if (it == 'rb'){
+          v[i] = RiTa.randomWord({pos:"rb", numSyllables:2});
+      }
+      if (it == 'nns'){
+          v[i] = RiTa.randomWord({pos:"nns", numSyllables:3});
+      }
+
+    text(v[i], 20, 100 + i * 20);
+  }
+
+}
+  </script>
+</html>

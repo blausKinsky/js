@@ -50,11 +50,67 @@
 
 <script> 
 
-//refactor('Green', 'half-step on', inputValue, 'check', 'piano');
+//class example: this is simple pseudocode, but should point you in the right direction
+class Button {
+  constructor(id, type) {
+    if (type == 'halfstep') {
+      this.color = 'Green';
+      this.sound = 2;
+      this.isClicked = false; 
+      this.btnText = 'halfstep off';
+
+        //set other attributes
+    } elif type == 'vibrato' {
+      this.color = 'Purple';
+      this.sound = 3;
+      this.isClicked = false; 
+      this.btnText = 'vibrato off';
+    }
+    //we have to make sure that our buttons are bound to our JS class
+    // ideally, we would just createElement() within these buttons and avoid html entirely, but regardless
+    //to make sure our onclick function references the class, we need something like:
+    document.getElementById(id).onclick = event => {
+      // if we need to get anything from the click event, that arrow function will pass us a variable called event
+      this.update(this.type)
+    }
+  }
+  update(type) {
+  if (type == 'halfstep'){
+        if (this.isClicked == false){
+          this.color = 'Red';
+          this.sound = 1; 
+          this.btnText = 'halfstep on';
+      } else{
+          this.color = 'Green';
+          this.sound = 2; 
+          this.btnText = 'halfstep off';
+      }
+
+  }
 
 
-let stateTracker{"check:":{} 
+    //anything that only applies to a single button can go here
+  }
+
+  refactor() {
+    // refactor function can go here
+  }
 }
+
+// the best way in OOP to deal with the problem we had last week (that certain parts of our state machine are dependent on the state of both buttons, rather than them being isolated) is to create a container class for our buttons, so that we have a single place that keeps track of them both and can perform actions that require knowledge of both buttons' state
+class ButtonMenu {
+  
+  constructor() {
+    const h = new Button('check', 'halfstep');
+    const v = new Button('check2', 'vibrato')
+    this.contents = {'halfstep': h, 'vibrato': v}
+  }
+  updateState(buttonType) {
+    //Anything that applies to both buttons can go here, since they're both in the contents attribute - so determining whether we're using cello, for exampl
+    }
+}
+
+const myMenu = new ButtonMenu()
 
 let notes = ["c1","c_1", "d1", "d_1","e1", "f1","f_1","g1","g_1","a1","a_1","b1","c2","c_2","d2","d_2","e2","f2"]
 // let myNote_IDs = [];
