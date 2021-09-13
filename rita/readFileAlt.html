@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Read Text File</title>
+</head>
+
+<body>
+
+	
+	<script type="text/javascript">
+
+		fetch('artistStatements.txt')
+		  .then(response => response.text())
+
+		  // .then(text => console.log(text))
+
+		  
+		// fetch('artistStatements.txt')
+		//   .then(response => response.text())
+		//   .then(data => {
+		//   	// Do something with your data
+		//   	console.log(data);
+		//   });
+
+
+
+		// const fileList = event.target.files;
+		// 	let fileContent = "";
+
+		// 	const fr = new FileReader();
+		// 	fr.onload = () => {
+		// 	  fileContent = fr.result;
+		// 	  console.log('Commands', fileContent);
+		// 	}
+
+		// 	fr.readAsText(fileList[0]);
+	</script>
+</body>
+
+</html>
