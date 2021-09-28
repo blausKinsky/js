@@ -4,30 +4,26 @@ let result;
 let pairs = [];
 let words = [];
 let uniquePairs = {};
+let f = "uP.txt";
 
 function preload() {
   result = loadStrings('assets/artistStatements.txt');
+  // data = loadJSON("assets/music_genres.json"); 
+  data = loadJSON("assets/new.json"); 
 }
-
-let word = 'fudge';
-// console.log('the word total for ', word, 'is ', wordToNumber(word,alpha));
-let phrase = 'the rain in spain is mostly on the plane';
-
-// console.log(wordToNumber(word,alpha));
-let testArray = ['and','but' , 'other'];
-
 
 function setup() {
 	createCanvas(600,600);
     background(200);
+    let myData = data; 
+    let myString = '9';
 
-    // console.log(result[0]);
-    for(w=0;w<6;w++){
+    console.log(myData[myString]);
+    console.log(myData["15"]);
+    console.log(myData["18"]);
+    for(w=0;w<6;w++){//change to results.length when you run the whole thing
       let splitTest = split(result[w],' ');
-      // console.log(splitTest);
       for(j=0;j<splitTest.length; j++){
-        // console.log('in the first loop, the j is ', j, splitTest[j]);
-
         let lwrC = splitTest[j].toLowerCase();
         if (words.indexOf(splitTest[j])>=0){
             console.log('do nothing'); 
@@ -40,6 +36,7 @@ function setup() {
           }else{
             uniquePairs[theWnum.toString()] = [splitTest[j]];//this makes uniquePairs an object filled with arrays 
           }
+
         }
 
     }
@@ -51,7 +48,7 @@ function setup() {
     for(z=0;z<pairs.length;z++){
       // console.log(pairs[z]);
     }
-    console.log('the length of pairs is ', pairs.length, pairs);
+    // console.log('the length of pairs is ', pairs.length, pairs);
     //search by number by turning it into a string
     console.log('number 15 is ', uniquePairs['15'])
 }
@@ -65,3 +62,4 @@ function wordToNumber (word, arr){
 	}
   return wordTotal;
 }
+

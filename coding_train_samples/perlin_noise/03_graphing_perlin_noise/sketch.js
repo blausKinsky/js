@@ -27,10 +27,13 @@ function draw() {
     // var y = height/2 + sin(xoff) * height/2;
     var y = noise(xoff) * height;
     vertex(x, y);
+    console.log('the x and y in the forloop vertex are ', x, y)
 
     xoff += inc;
+    console.log('the xoff in the for loop is ', xoff)
   }
   endShape();
 
   start += inc;
+  console.log('the start at the end of the draw is ', start)
 }

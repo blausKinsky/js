@@ -1,0 +1,63 @@
+for the two words that should be split, I can take them each individually into the old program that calculates the numbers and then move each word to the correct number entry 
+
+also, double check, many may already exist
+
+——
+how to handle good phrases like:
+advertising driven
+vertically scrolling 
+corporate owned
+
+should I make a separate array of known compound phrases? 
+I think it could make the piece better
+
+
+in these cases
+
+
+———
+is the artist statement 
+a space? 
+a place of poetry and sound? 
+a terrain?
+
+maybe you ping pong between phrases
+(or should it be user driven)? 
+Or video poem 
+(it could be all
+maybe it could be a nice sonic space
+where different word lengths or 
+some kind of mapping is involved
+maybe it uses the same word to number values
+——
+
+
+one way of thinking about the piece, is to make 
+a series of number combinations 
+some from lower to upper
+
+experiment with 
+three from higher with one lower
+
+three lows and one high
+experiment with ranges
+
+——
+for the space of art language
+maybe it is skinned with searches for the words? 
+or images of the art? 
+it is like you are navigating the landscape of 2020
+it is like you are navigating the 
+cognitive space 
+of digital media artists
+
+
+would it be ridiculous to create it like vector space? 
+or 
+in other words
+how should we organize the space? 
+by numericaly related words or predefined phrases we know are compellng
+maybe it is a combo
+
+—
+
