@@ -1,0 +1,7 @@
+Result: 1 rad = 57.295779513 °
+
+https://www.math.net/radians-to-degrees
+
+
+TWO_PI radians = 360º
+90º = PI/2
