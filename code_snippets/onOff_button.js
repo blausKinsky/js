@@ -6,7 +6,7 @@ function startStop(){
   if (onOff == false){
     osc.start(); 
     onOff = true; 
-    console.log('if condition oo is now', onOff);
+    console.log('if condition is now', onOff);
   }else{
     osc.stop(); 
     onOff = false; 

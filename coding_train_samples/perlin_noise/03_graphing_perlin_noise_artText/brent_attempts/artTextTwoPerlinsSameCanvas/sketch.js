@@ -46,25 +46,36 @@ function setup() {
 
 function draw() {
   background(50);
-  perl1();
-  perl2();
+  noFill();
+  strokeWeight(2)
+
+  for (var x = 0; x < width; x++) {
+    beginShape()
+    var xoff = start;
+    var y = noise(xoff) * height+80;
+    vertex(x, y);
+    xoff += inc;
+    stroke('rgba(237,111,237, 0.90)');
+
+    // perl1();
+    // perl2();
+    endShape()
+
+  }
+
+  firstX--
+  secondX2--
+  start += inc
 
 }
 
 function perl2(){
-    beginShape()
-    var xoff2 = start2;
+
     for (var x2 = 0; x2 < width; x2++) {
     if (!hasStarted2 && x2 == firstX2) {
       altY2 = y2 - line1Offset2
       hasStarted2 = true
     }
-    noFill();
-    strokeWeight(2)
-    stroke('rgba(237,111,237, 0.90)');
-    var y2 = noise(xoff2) * height+80;
-    vertex(x2, y2);
-    xoff2 += inc2;
 
 
     let interval2b = int(random(width-100, width-1))
@@ -106,10 +117,7 @@ function perl2(){
       line(firstX2 + tDescent, altY2, firstX2 + tDescent, altY2+(line1Offset2*.85))// the second two coordinates are where the line meets the noise curve
 
   }
-    endShape()
-    firstX2--
-    secondX2--
-    start2 += inc2
+
 }
 
 

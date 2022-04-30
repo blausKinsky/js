@@ -1,0 +1,6 @@
+
+https://www.guitarland.com/MusicTheoryWithToneJS/TonejsSetup.html
+
+https://github.com/Tonejs/Tone.js/
+
+https://github.com/Tonejs/Tone.js/wiki
